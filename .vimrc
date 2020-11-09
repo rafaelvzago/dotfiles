@@ -17,6 +17,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'mtdl9/vim-log-highlighting'
 Plugin 'preservim/nerdtree'
 Plugin 'itchyny/lightline.vim'
+Plugin 'itchyny/vim-gitbranch'
 call vundle#end()            " required
 "
 " Brief help
@@ -51,6 +52,7 @@ set smarttab      				" insert tabs on the start of a line according to shiftwid
 set hlsearch      				" highlight search terms
 set incsearch     				" show search matches as you type
 set formatoptions-=t 			" do not automatically wrap text when typing
+set laststatus=2
 syntax on
 highlight ColorColumn ctermbg=0 guibg=lightgray
 " Mappings
@@ -62,3 +64,19 @@ map <C-t> :tabnew<CR>
 " Plugins config
 let g:netrw_banner = 0          " Remove nerdtree banners
 let g:netrw_browse_split = 2
+
+" Git Repo Information
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
+if !has('gui_running')
+  set t_Co=256
+endif
