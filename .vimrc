@@ -79,6 +79,8 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
+" Language specifics
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 if !has('gui_running')
   set t_Co=256
