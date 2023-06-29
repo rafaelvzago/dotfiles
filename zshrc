@@ -11,3 +11,7 @@ source /home/rzago/Git/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source /home/rzago/my.env
+if [ /usr/local/bin/oc ]; then
+  source <(oc completion zsh)
+  compdef _oc oc
+fi

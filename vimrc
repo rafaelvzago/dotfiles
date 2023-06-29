@@ -13,8 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'mbbill/undotree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'loctvl842/monokai-pro.vim'
-Plugin 'morhetz/gruvbox'
+Plugin 'arcticicestudio/nord-vim'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'mtdl9/vim-log-highlighting'
 Plugin 'preservim/nerdtree'
@@ -34,7 +33,10 @@ call vundle#end()            " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-colorscheme gruvbox
+"let g:dracula_colorterm = 0
+colorscheme nord
+"let g:dracula_italic = 0
+highlight Normal ctermbg=None
 
 filetype plugin indent on
 set termguicolors
@@ -81,7 +83,7 @@ let g:netrw_browse_split = 2
 
 " Git Repo Information
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
