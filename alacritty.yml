@@ -1,0 +1,102 @@
+# Arquivo de configuração do Alacritty
+
+env:
+    # This value is used to set the `$TERM` environment variable for
+    #   # each instance of Alacritty. If it is not present, alacritty will
+    #     # check the local terminfo database and use `alacritty` if it is
+    #       # available, otherwise `xterm-256color` is used.
+  TERM: xterm-256color
+
+font:
+  family: MesloLGS NF
+  size: 11
+
+# Copyright (c) 2016-present Sven Greb <development@svengreb.de>
+# This source code is licensed under the MIT license found in the license file.
+
+colors:
+  primary:
+    background: "#2e3440"
+    foreground: "#d8dee9"
+    dim_foreground: "#a5abb6"
+  cursor:
+    text: "#2e3440"
+    cursor: "#d8dee9"
+  vi_mode_cursor:
+    text: "#2e3440"
+    cursor: "#d8dee9"
+  selection:
+    text: CellForeground
+    background: "#4c566a"
+  search:
+    matches:
+      foreground: CellBackground
+      background: "#88c0d0"
+    footer_bar:
+      background: "#434c5e"
+      foreground: "#d8dee9"
+  normal:
+    black: "#3b4252"
+    red: "#bf616a"
+    green: "#a3be8c"
+    yellow: "#ebcb8b"
+    blue: "#81a1c1"
+    magenta: "#b48ead"
+    cyan: "#88c0d0"
+    white: "#e5e9f0"
+  bright:
+    black: "#4c566a"
+    red: "#bf616a"
+    green: "#a3be8c"
+    yellow: "#ebcb8b"
+    blue: "#81a1c1"
+    magenta: "#b48ead"
+    cyan: "#8fbcbb"
+    white: "#eceff4"
+  dim:
+    black: "#373e4d"
+    red: "#94545d"
+    green: "#809575"
+    yellow: "#b29e75"
+    blue: "#68809a"
+    magenta: "#8c738c"
+    cyan: "#6d96a5"
+    white: "#aeb3bb"
+
+# Suporte a scroll de mouse
+mouse:
+  # Suporte a rolagem do mouse
+  # no modo de rolagem alternada (alt-scroll)
+  # e no modo de rolagem suave (smooth-scroll)
+  # No entanto, você precisará definir as teclas de modificador de rolagem alternada (alt-scroll) nas configurações do seu gerenciador de janelas
+  # para que isso funcione corretamente
+  # Se você estiver usando o GNOME como seu gerenciador de janelas,
+  # pode ser necessário definir as configurações de rolagem do mouse usando o GNOME Tweak Tool
+  # Consulte a documentação do seu gerenciador de janelas para obter mais informações
+  # sobre como configurar a rolagem do mouse
+  # (padrão é true)
+  smooth-scroll: true
+
+# Define o estilo do cursor
+# # Os possíveis valores são "Block", "Underline" e "Beam"
+# # O valor padrão é "Block"
+cursor:
+  style:
+    shape: Beam
+    blinking: Always
+  blink_interval: 500
+  unfocused_hollow: true
+#
+# Copy on select
+# A seleção de texto copia automaticamente o texto selecionado para a área de transferência
+# e pode ser colado usando o botão direito do mouse ou a combinação de teclas padrão Ctrl + Shift + V
+# (padrão é false)
+selection:
+  save_to_clipboard: true
+
+shell:
+  # Define o shell padrão
+  program: /bin/zsh
+  # Define a opção de login para iniciar uma nova sessão de shell como um shell de login
+  login: true
+
