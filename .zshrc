@@ -15,3 +15,9 @@ if [ /usr/local/bin/oc ]; then
   source <(oc completion zsh)
   compdef _oc oc
 fi
+
+if type rg &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='rg --files'
+      export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
+

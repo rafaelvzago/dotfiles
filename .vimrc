@@ -80,15 +80,15 @@ syntax on                                                       " syntax highlig
 " NERDTree config
 let g:netrw_banner = 0                                          " Remove nerdtree banners
 let g:netrw_browse_split = 2                                    " Open nerdtree in a new tab
-map <C-n> :NERDTreeToggle<CR>                                   " Map Ctrl + n to open nerdtree
-map <C-l> :tabn<CR>                                             " Map Ctrl + l to go to next tab
-map <C-h> :tabp<CR>                                             " Map Ctrl + h to go to previous tab
-map <C-t> :tabnew<CR>                                           " Map Ctrl + t to open a new tab
+map <C-n> :NERDTreeToggle<CR>
+map <C-l> :tabn<CR>
+map <C-h> :tabp<CR>
+map <C-t> :tabnew<CR>
 
 " Fuzzy search
-let g:fzf_preview_window = ['right,75%', 'ctrl-/']              " Set fzf preview window
-nnoremap <C-S-P> :Files<CR>                                     " Ctrl + Shift + P to open fzf file search
-nnoremap <C-S-R> :Rg<CR>                                        " Ctrl + Shift + R to open fzf search in files
+let g:fzf_preview_window = ['right,50%', 'ctrl-/']              " Set fzf preview window
+nnoremap <C-S-P> :Files<CR>
+nnoremap <C-S-R> :Rg<CR>
 
 " Copilot specifics 
 let g:copilot_filetypes = {'markdown': v:true}
@@ -110,4 +110,10 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " set markdown f
 
 if !has('gui_running')                                          " if not running in gui mode 
   set t_Co=256                                                  " set terminal colors to 256
+endif
+
+if exists('+termguicolors') && &termguicolors                   " if terminal supports true colors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"                        " set true colors
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"                        " set true colors
+  set termguicolors                                             " enable true colors
 endif
