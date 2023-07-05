@@ -90,6 +90,8 @@ let g:fzf_preview_window = ['right,75%', 'ctrl-/']              " Set fzf previe
 nnoremap <C-S-P> :Files<CR>                                     " Ctrl + Shift + P to open fzf file search
 nnoremap <C-S-R> :Rg<CR>                                        " Ctrl + Shift + R to open fzf search in files
 
+" Copilot specifics 
+let g:copilot_filetypes = {'markdown': v:true}
 
 " Lightline config 
 let g:lightline = {

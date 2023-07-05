@@ -29,3 +29,12 @@ backup:
 		fi; \
 	done
 
+# Step to automaticaly add the files to the git repository, commit	with a default message
+# and push to the remote repository. The message is the current date, the git status output.
+# The commit is only done if there are changes to be commited.
+git:
+	@echo "Commiting changes to git repository"
+	@git add .
+	@git commit -m "`date` `git status --porcelain` "
+	@echo "Pushing changes to git repository"
+	@git push
