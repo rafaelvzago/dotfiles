@@ -2,6 +2,14 @@
 
 This repository contains my personal dotfiles for zsh, tmux, and vim, as well as some other personal configuration files.
 
+The DOTFILES included here:
+
+- .vimrc
+- .tmux.conf
+- .zshrc
+- alacritty.yaml
+- my.env
+
 ## Installation
 
 To use these dotfiles, please follow these steps:
@@ -9,27 +17,16 @@ To use these dotfiles, please follow these steps:
 1. Clone this repository to your home directory:
 
 ```bash
-git clone https://github.com/<username>/dotfiles.git ~/dotfiles
+git clone https://github.com/rafaelvzago/dotfiles.git ~/dotfiles
 ```
 
-Replace `<username>` with your GitHub username.
-
-2. Replace the existing dotfiles in your home directory with the files from this repository:
-
-```bash
-cd ~/dotfiles
-cp -r . ~/
-```
-
-
-This will copy all files and directories from the `dotfiles` directory to your home directory, overwriting any existing files with the same names.
-
-3. Create symbolic links to the files in this repository:
+2. Create symbolic links to the files in this repository:
 
 ```bash
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
+ln -sf ~/dotfiles/alacritty.yaml ~/.config/alacritty/alacritty.yaml
 ```
 
 This will create symbolic links to the files in this repository, so that any changes made to these files will be reflected in your home directory.

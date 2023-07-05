@@ -28,3 +28,4 @@ backup:
 			cp -r $$dotfile $(BACKUP_FOLDER); \
 		fi; \
 	done
+
