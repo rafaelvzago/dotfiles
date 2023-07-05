@@ -35,6 +35,6 @@ backup:
 git:
 	@echo "Commiting changes to git repository"
 	@git add .
-	@git commit -m "`date` `git status --porcelain` "
+	@git commit -m "`date`" -m "`git status --porcelain` "
 	@echo "Pushing changes to git repository"
 	@git push
