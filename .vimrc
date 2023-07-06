@@ -30,6 +30,7 @@ Plugin 'fatih/vim-go'                                           " Go syntax high
 Plugin 'dense-analysis/ale'                                     " Asynchronous Lint Engine
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }           " Fuzzy search
 Plugin 'junegunn/fzf.vim'                                       " Fuzzy search
+Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()            " required
 
 " see :h vundle for more details or wiki for FAQ
@@ -43,9 +44,9 @@ set colorcolumn=80                                              " set colorcolum
 
 filetype plugin indent on
 set termguicolors                                               " enable 24-bit RGB colors
-set mouse=a                                                     " enable mouse support
-set cursorline                                                  " highlight the current line
-set clipboard=unnamedplus                                       " use system clipboard
+set mouse=a                                                    " enable mouse support
+set clipboard=unnamedplus
+set mouse=r
 set bg=dark                                                     " set background to dark
 set noerrorbells                                                " don't beep
 set nowrap                                                      " don't wrap lines
