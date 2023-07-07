@@ -57,12 +57,12 @@ colors:                                                                       # 
 mouse:                                                                        # The mouse section defines the mouse settings to use for the terminal
   smooth-scroll: true
 
-cursor:                                                                       # The cursor section defines the cursor settings to use for the terminal the options are: block, beam, underline
+cursor:
   style:
     shape: Beam
     blinking: Always
-  blink_interval: 500                                                         # The blink_interval section defines the blink interval to use for the terminal
-  unfocused_hollow: true                                                      # The unfocused_hollow section defines the unfocused hollow to use for the terminal
+  blink_interval: 500
+  unfocused_hollow: true
 
 selection:                                                                    # The selection section defines the selection settings to use for the terminal (copy on select, highlight on select)
   save_to_clipboard: true
