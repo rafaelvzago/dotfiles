@@ -56,9 +56,12 @@ new-machine:
 # Step to automaticaly add the files to the git repository, commit	with a default message
 # and push to the remote repository. The message is the current date, the git status output.
 # The commit is only done if there are changes to be commited.
+# The push will be done even if the destination is not the main branch and doesn't 
+# exist in the remote repository.
+
 git:
-	@echo "Commiting changes to git repository"
 	@git add .
-	@git commit -m "`date`" -m "`git status --porcelain` "
-	@echo "Pushing changes to git repository"
-	@git push
+	@git status
+	@git commit -m "Automatic commit on `date`"
+	@git push origin $(shell git rev-parse --abbrev-ref HEAD) || true # Ignore if the branch doesn't exist in the remote repository
+
