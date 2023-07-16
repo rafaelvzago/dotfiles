@@ -5,16 +5,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source /home/rzago/Git/powerlevel10k/powerlevel10k.zsh-theme
+source $HOME/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-source /home/rzago/my.env
-if [ /usr/local/bin/oc ]; then
-  source <(oc completion zsh)
-  compdef _oc oc
-fi
+source $HOME/my.env
+#if [ /usr/local/bin/oc ]; then
+#  source <(oc completion zsh)
+#  compdef _oc oc
+#fi
 
 if type rg &> /dev/null; then
     export FZF_DEFAULT_COMMAND='rg --files'
