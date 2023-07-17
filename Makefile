@@ -7,10 +7,15 @@
 # Usage: make install
 
 # Variables
-# The dotfiles to be copied
-# The dotfiles to be copied to the home folder (~/) are listed here (without the dot)
+# Backup folder
 BACKUP_FOLDER = $(CURDIR)
-DOTFILES = ~/.p10k.zsh ~/my.env ~/.vimrc ~/.zshrc ~/.tmux.conf ~/.config/alacritty/alacritty.yml
+# Dotfiles to be copied
+DOTFILES = ~/.p10k.zsh	\
+					 ~/my.env			\
+					 ~/.vimrc			\
+					 ~/.zshrc			\
+					 ~/.tmux.conf \
+					 ~/.config/alacritty/alacritty.yml
 
 # Step to check if the dofiles already exist
 check:
@@ -20,7 +25,8 @@ check:
 		fi; \
 	done
 
-# Step to backup the existing dotfiles, copying from the original location to the backup folder.
+# Step to backup the existing dotfiles, copying from the original location to 
+# the backup folder.
 backup:
 	@for dotfile in $(DOTFILES); do \
 		if [ -e $$dotfile ]; then \
@@ -30,38 +36,48 @@ backup:
 	done
 
 # Step to config the machine when it's new, installing the dependencies to:
-# - Vim
-#   - Vundle
-#   - Plugins
-#   - Colorscheme
-# - Tmux
-#   - Tmux Plugin Manager
-# - Zsh
-# - Powerlevel10k
-# - Alacritty
 new-machine:
-	@echo "Installing dependencies"
+	@echo "Configuring a new machine"
 	@echo "Installing Vundle"
-	@git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim || true # Ignore if already exists
+	@git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim || true 
 	@echo "Installing Vim plugins"
-	@vim +PluginInstall +qall || true # Ignore if already exists
+	@vim +PluginInstall +qall || true 
 	@echo "Installing Tmux Plugin Manager" 
-	@git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true # Ignore if already exists
+	@git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true 
 	@echo "Installing Powerlevel10k"
-	@git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k || true # Ignore if already exists
-	@echo "Configure allacritty Alacritty"
-	@mkdir -p ~/.config/alacritty
-	@ln -s $(CURDIR)/alacritty.yml ~/.config/alacritty/alacritty.yml || true # Ignore if already exists
+	@git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k || true 
 
-# Step to automaticaly add the files to the git repository, commit	with a default message
-# and push to the remote repository. The message is the current date, the git status output.
+# Step to update the dotfiles, creating the symbolic links to the dotfiles.
+update:
+	@echo "Configure Alacritty"
+	@mkdir -p ~/.config/alacritty || true
+	@rm -f ~/.config/alacritty/alacritty.yml
+	@ln -s $(CURDIR)/alacritty.yml ~/.config/alacritty/alacritty.yml
+	@echo "Configure Zsh"
+	@rm -f ~/.zshrc
+	@ln -s $(CURDIR)/.zshrc ~/.zshrc
+	@echo "Configure Vim"
+	@rm -f ~/.vimrc
+	@ln -s $(CURDIR)/.vimrc ~/.vimrc
+	@echo "Configure Tmux"
+	@rm -f ~/.tmux.conf
+	@ln -s $(CURDIR)/.tmux.conf ~/.tmux.conf
+	@echo "Configure Powerlevel10k"
+	@rm -f ~/.p10k.zsh
+	@ln -s $(CURDIR)/.p10k.zsh ~/.p10k.zsh
+	@echo "Configure my.env"
+	@rm -f ~/my.env
+	@ln -s $(CURDIR)/my.env ~/my.env
+
+# Step to automaticaly add the files to the git repository, commit	with a 
+# default message and push to the remote repository. The message is the current 
+# date, the git status output.
 # The commit is only done if there are changes to be commited.
-# The push will be done even if the destination is not the main branch and doesn't 
-# exist in the remote repository.
-
+# The push will be done even if the destination is not the main branch 
+# and doesn't exist in the remote repository.
 git:
 	@git add .
 	@git status
 	@git commit -m "Automatic commit on `date`"
-	@git push origin $(shell git rev-parse --abbrev-ref HEAD) || true # Ignore if the branch doesn't exist in the remote repository
+	@git push origin $(shell git rev-parse --abbrev-ref HEAD) || true 
 

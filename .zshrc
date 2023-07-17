@@ -11,10 +11,10 @@ source $HOME/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source $HOME/my.env
-#if [ /usr/local/bin/oc ]; then
-#  source <(oc completion zsh)
-#  compdef _oc oc
-#fi
+if [ /usr/local/bin/oc ]; then
+  source <(oc completion zsh)
+  compdef _oc oc
+fi
 
 if type rg &> /dev/null; then
     export FZF_DEFAULT_COMMAND='rg --files'
