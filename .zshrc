@@ -21,3 +21,19 @@ if type rg &> /dev/null; then
       export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/rzago/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/rzago/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/rzago/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/rzago/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
