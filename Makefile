@@ -38,6 +38,8 @@ backup:
 # Step to config the machine when it's new, installing the dependencies to:
 new-machine:
 	@echo "Configuring a new machine"
+	@echo "Setting current user to allow ALL with sudo"
+	@echo "$(shell whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
 	@echo "Installing Vundle"
 	@git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim || true 
 	@echo "Installing Vim plugins"
@@ -46,6 +48,10 @@ new-machine:
 	@git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true 
 	@echo "Installing Powerlevel10k"
 	@git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k || true 
+	@echo "Installing Openshift CLI with SUDO"
+	@sudo curl -L https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz -o /usr/local/bin/oc.tar.gz || true
+	@echo "Installing Openstack CLI with SUDO"
+	@sudo curl -L https://releases.openstack.org/$(shell curl -s https://releases.openstack.org/ | grep -oP '(?<=href=")[^"]*(?=")' | grep -m 1 -oP '(?<=/)[^/]*(?=/")')/openstack-$(shell curl -s https://releases.openstack.org/ | grep -oP '(?<=href=")[^"]*(?=")' | grep -m 1 -oP '(?<=/)[^/]*(?=/")')-$(shell curl -s https://releases.openstack.org/ | grep -oP '(?<=href=")[^"]*(?=")' | grep -m 1 -oP '(?<=/)[^/]*(?=/")')-$(shell curl -s https://releases.openstack.org/ | grep -oP '(?<=href=")[^"]*(?=")' | grep -m 1 -oP '(?<=/)[^/]*(?=/")').tar.gz -o /usr/local/bin/openstack.tar.gz || true
 
 # Step to update the dotfiles, creating the symbolic links to the dotfiles.
 update:
