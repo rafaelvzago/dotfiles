@@ -1,39 +1,65 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#!/bin/bash
+# Author: Rafael Zago
+# Email: rafaelvzago@gmail.com
+# GitHub: https://github.com/rafaelvzago
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+# Define paths and files as variables for easy modification and readability
+P10K_INSTANT_PROMPT="${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+P10K_THEME="$HOME/powerlevel10k/powerlevel10k.zsh-theme"
+P10K_CONFIG="$HOME/.p10k.zsh"
+CONDA_INIT_SCRIPT="$HOME/miniconda3/etc/profile.d/conda.sh"
+CONDA_BIN_DIR="$HOME/miniconda3/bin"
+OC_BINARY="/usr/local/bin/oc"
+
+# Enable Powerlevel10k instant prompt.
+if [[ -r "$P10K_INSTANT_PROMPT" ]]; then
+  source "$P10K_INSTANT_PROMPT"
 fi
 
-source $HOME/powerlevel10k/powerlevel10k.zsh-theme
+# Initialize completion system
+autoload -Uz compinit && compinit
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Load Powerlevel10k theme
+source "$P10K_THEME"
 
-source $HOME/my.env
-if [ /usr/local/bin/oc ]; then
+# Load Powerlevel10k configuration if it exists
+[[ -f "$P10K_CONFIG" ]] && source "$P10K_CONFIG"
+
+# FZF configuration with ripgrep as the default command
+if type rg &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='rg --files'
+    export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
+
+# Conda initialization
+__conda_setup="$("$CONDA_BIN_DIR/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+elif [ -f "$CONDA_INIT_SCRIPT" ]; then
+    source "$CONDA_INIT_SCRIPT"
+else
+    export PATH="$CONDA_BIN_DIR:$PATH"
+fi
+unset __conda_setup
+
+# OpenShift 'oc' completion
+if [ -f "$OC_BINARY" ]; then
   source <(oc completion zsh)
   compdef _oc oc
 fi
 
-if type rg &> /dev/null; then
-    export FZF_DEFAULT_COMMAND='rg --files'
-      export FZF_DEFAULT_OPTS='-m --height 50% --border'
-fi
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/rzago/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/rzago/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/rzago/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/rzago/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
+# Load custom environment variables
+source "$HOME/my.env"
