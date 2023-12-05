@@ -13,17 +13,17 @@ filetype off                                                    " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim                              " set runtime path to vundle
-call vundle#begin()                                            " required  
+call vundle#begin()                                            " required
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'                                   " Vundle plugin manager
-Plugin 'mbbill/undotree'                                        " Undo tree plugin manager 
-Plugin 'tpope/vim-fugitive'                                     " Git wrapper for vim 
-Plugin 'arcticicestudio/nord-vim', { 'on':  'NERDTreeToggle' }  " Nord theme for vim 
+Plugin 'mbbill/undotree'                                        " Undo tree plugin manager
+Plugin 'tpope/vim-fugitive'                                     " Git wrapper for vim
+Plugin 'patstockwell/vim-monokai-tasty'
 Plugin 'github/copilot.vim'                                     " Github copilot plugin for vim
-Plugin 'mtdl9/vim-log-highlighting'                             " Log highlighting for vim 
-Plugin 'preservim/nerdtree'                                     " NERDTree plugin for vim 
-Plugin 'itchyny/lightline.vim'                                  " Lightline plugin for vim 
+Plugin 'mtdl9/vim-log-highlighting'                             " Log highlighting for vim
+Plugin 'preservim/nerdtree'                                     " NERDTree plugin for vim
+Plugin 'itchyny/lightline.vim'                                  " Lightline plugin for vim
 Plugin 'itchyny/vim-gitbranch'                                  " Git branch in lightline
 Plugin 'hashivim/vim-terraform'                                 " Terraform syntax highlighting
 Plugin 'fatih/vim-go'                                           " Go syntax highlighting
@@ -37,9 +37,9 @@ call vundle#end()            " required
 " Put your non-Plugin stuff after this line
 
 " Theme config
-colorscheme nord                                                " set colorscheme  
-highlight Normal ctermbg=None                                   " set background to none for transparency 
-highlight ColorColumn ctermbg=235 guibg=#d8dee9                 " set colorcolumn background to nord background
+colorscheme vim-monokai-tasty                                   " set colorscheme
+highlight Normal ctermbg=None                                   " set background to none for transparency
+highlight ColorColumn ctermbg=235 guibg=#272822                 " set colorcolumn background to dark grey
 set colorcolumn=80                                              " set colorcolumn to 80 characters
 
 filetype plugin indent on
@@ -91,12 +91,12 @@ let g:fzf_preview_window = ['right,50%', 'ctrl-/']              " Set fzf previe
 nnoremap <C-S-P> :Files<CR>
 nnoremap <C-S-R> :Rg<CR>
 
-" Copilot specifics 
+" Copilot specifics
 let g:copilot_filetypes = {'markdown': v:true}
 
-" Lightline config 
+" Lightline config
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'monokai_tasty',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -109,7 +109,7 @@ let g:lightline = {
 " Language specifics
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " set markdown filetype
 
-if !has('gui_running')                                          " if not running in gui mode 
+if !has('gui_running')                                          " if not running in gui mode
   set t_Co=256                                                  " set terminal colors to 256
 endif
 
