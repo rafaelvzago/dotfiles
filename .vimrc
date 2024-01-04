@@ -19,7 +19,7 @@ call vundle#begin()                                            " required
 Plugin 'VundleVim/Vundle.vim'                                   " Vundle plugin manager
 Plugin 'mbbill/undotree'                                        " Undo tree plugin manager
 Plugin 'tpope/vim-fugitive'                                     " Git wrapper for vim
-Plugin 'patstockwell/vim-monokai-tasty'
+Plugin 'dracula/vim', { 'name': 'dracula' }                     " Dracula theme for vim
 Plugin 'github/copilot.vim'                                     " Github copilot plugin for vim
 Plugin 'mtdl9/vim-log-highlighting'                             " Log highlighting for vim
 Plugin 'preservim/nerdtree'                                     " NERDTree plugin for vim
@@ -37,7 +37,7 @@ call vundle#end()            " required
 " Put your non-Plugin stuff after this line
 
 " Theme config
-colorscheme vim-monokai-tasty                                   " set colorscheme
+colorscheme dracula                                             " set colorscheme
 highlight Normal ctermbg=None                                   " set background to none for transparency
 highlight ColorColumn ctermbg=235 guibg=#272822                 " set colorcolumn background to dark grey
 set colorcolumn=80                                              " set colorcolumn to 80 characters
@@ -96,7 +96,7 @@ let g:copilot_filetypes = {'markdown': v:true}
 
 " Lightline config
 let g:lightline = {
-      \ 'colorscheme': 'monokai_tasty',
+      \ 'colorscheme': 'dracula',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]

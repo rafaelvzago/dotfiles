@@ -5,80 +5,43 @@ font:
   family: MesloLGS NF                                                         # Define the font family (e.g. MesloLGS NF)
   size: 11                                                                    # Define the font size (e.g. 11)
 
-colors:                                                                       # The colors section defines the color palette to use for the terminal based on the monokai  theme
+# Dracula theme
+colors:
   primary:
-    background: '0x272822'
-    foreground: '0xf8f8f2'
+    background: '#282a36'                                                     # Define the background color (e.g. #282a36)
+    foreground: '#f8f8f2'                                                     # Define the foreground color (e.g. #f8f8f2)
 
   normal:
-    black:   '0x272822'
-    red:     '0xf92672'
-    green:   '0xa6e22e'
-    yellow:  '0xf4bf75'
-    blue:    '0x66d9ef'
-    magenta: '0xae81ff'
-    cyan:    '0xa1efe4'
-    white:   '0xf8f8f2'
+    black: '#21222C'                                                          # Define the normal black color (e.g. #21222C)
+    red: '#FF5555'                                                            # Define the normal red color (e.g. #FF5555)
+    green: '#50FA7B'                                                          # Define the normal green color (e.g. #50FA7B)
+    yellow: '#F1FA8C'                                                         # Define the normal yellow color (e.g. #F1FA8C)
+    blue: '#BD93F9'                                                           # Define the normal blue color (e.g. #BD93F9)
+    magenta: '#FF79C6'                                                        # Define the normal magenta color (e.g. #FF79C6)
+    cyan: '#8BE9FD'                                                           # Define the normal cyan color (e.g. #8BE9FD)
+    white: '#BFBFBF'                                                          # Define the normal white color (e.g. #BFBFBF)
 
   bright:
-    black:   '0x75715e'
-    red:     '0xf92672'
-    green:   '0xa6e22e'
-    yellow:  '0xf4bf75'
-    blue:    '0x66d9ef'
-    magenta: '0xae81ff'
-    cyan:    '0xa1efe4'
-    white:   '0xf9f8f5'
-
-  cursor:
-    text: '0x272822'
-    cursor: '0xf8f8f2'
-
-  selection:
-    text: '0x272822'
-    background: '0xf8f8f2'
-
-  search:
-    matches:
-      current: '0x272822'
-      other: '0x75715e'
-
-  lines:
-    0x00: '0x272822'
-    0x01: '0xf92672'
-    0x02: '0xa6e22e'
-    0x03: '0xf4bf75'
-    0x04: '0x66d9ef'
-    0x05: '0xae81ff'
-    0x06: '0xa1efe4'
-    0x07: '0xf8f8f2'
-
-  tab_bar:
-    background: '0x272822'
-    active_tab: '0xf8f8f2'
-    inactive_tab: '0x75715e'
-    inactive_tab_hover: '0xf8f8f2'
-
-  scroll_bar:
-    foreground: '0x75715e'
-    background: '0x272822'
-
-  overlay:
-    background: '0x272822'
-    foreground: '0xf8f8f2'
-
-  hints:
-    text: '0x272822'
+    black: '#6272A4'                                                          # Define the bright black color (e.g. #6272A4)
+    red: '#FF6E6E'                                                            # Define the bright red color (e.g. #FF6E6E)
+    green: '#69FF94'                                                          # Define the bright green color (e.g. #69FF94)
+    yellow: '#FFFFA5'                                                         # Define the bright yellow color (e.g. #FFFFA5)
+    blue: '#D6ACFF'                                                           # Define the bright blue color (e.g. #D6ACFF)
+    magenta: '#FF92DF'                                                        # Define the bright magenta color (e.g. #FF92DF)
+    cyan: '#A4FFFF'                                                           # Define the bright cyan color (e.g. #A4FFFF)
+    white: '#FFFFFF'                                                          # Define the bright white color (e.g. #FFFFFF)
 
 mouse:                                                                        # The mouse section defines the mouse settings to use for the terminal
   smooth-scroll: true
 
 cursor:
   style:
-    shape: Block
+    shape: Beam
     blinking: Always
   blink_interval: 500
   unfocused_hollow: true
+  thickness: 0.30
+  
 
 selection:                                                                    # The selection section defines the selection settings to use for the terminal (copy on select, highlight on select)
   save_to_clipboard: true
