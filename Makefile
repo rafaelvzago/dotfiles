@@ -15,6 +15,7 @@ DOTFILES = ~/.p10k.zsh	\
 					 ~/my.env			\
 					 ~/.vimrc			\
 					 ~/.zshrc			\
+					 ~/.bashrc		\
 					 ~/.tmux.conf \
 					 ~/.config/alacritty/alacritty.yml
 
@@ -48,16 +49,10 @@ new-machine:
 	@if ! command -v ansible &> /dev/null; then \
 		pip install -r requirements.txt; \
 	fi
-	@echo "Running ansible setup.yaml playbook"
-	@ansible-playbook ansible/setup.yaml || true
 	@echo "Installing Vundle"
 	@git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim || true
 	@echo "Installing Tmux Plugin Manager"
 	@git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true
-	@echo "Installing Powerlevel10k"
-	@git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k || true
-	@echo "Setting Zsh as default shell"
-	@chsh -s $(shell which zsh) || true
 
 # Step to update the dotfiles, creating the symbolic links to the dotfiles.
 config:
@@ -65,9 +60,9 @@ config:
 	@mkdir -p ~/.config/alacritty || true
 	@rm -f ~/.config/alacritty/alacritty.yml
 	@ln -s $(CURDIR)/alacritty.yml ~/.config/alacritty/alacritty.yml
-	@echo "Configure Zsh"
-	@rm -f ~/.zshrc
-	@ln -s $(CURDIR)/.zshrc ~/.zshrc
+	@echo "Configure Bash"
+	@rm -f ~/.bashrc
+	@ln -s $(CURDIR)/.bashrc ~/.bashrc
 	@echo "Configure Vim"
 	@rm -f ~/.vimrc
 	@echo "Configure Vim Plugins"
@@ -77,9 +72,6 @@ config:
 	@rm -f ~/.tmux.conf
 	@ln -s $(CURDIR)/.tmux.conf ~/.tmux.conf
 	@~/.tmux/plugins/tpm/bin/install_plugins || true
-	@echo "Configure Powerlevel10k"
-	@rm -f ~/.p10k.zsh
-	@ln -s $(CURDIR)/.p10k.zsh ~/.p10k.zsh
 	@echo "Configure my.env"
 	@rm -f ~/my.env
 	@ln -s $(CURDIR)/my.env ~/my.env

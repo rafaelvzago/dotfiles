@@ -20,8 +20,6 @@
 P10K_INSTANT_PROMPT="${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 P10K_THEME="$HOME/powerlevel10k/powerlevel10k.zsh-theme"
 P10K_CONFIG="$HOME/.p10k.zsh"
-CONDA_INIT_SCRIPT="$HOME/miniconda3/etc/profile.d/conda.sh"
-CONDA_BIN_DIR="$HOME/miniconda3/bin"
 OC_BINARY="/usr/local/bin/oc"
 
 # Enable Powerlevel10k instant prompt.
@@ -44,16 +42,6 @@ if type rg &> /dev/null; then
     export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
-# Conda initialization
-__conda_setup="$("$CONDA_BIN_DIR/conda" 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-elif [ -f "$CONDA_INIT_SCRIPT" ]; then
-    source "$CONDA_INIT_SCRIPT"
-else
-    export PATH="$CONDA_BIN_DIR:$PATH"
-fi
-unset __conda_setup
 
 # OpenShift 'oc' completion
 if [ -f "$OC_BINARY" ]; then
@@ -63,3 +51,9 @@ fi
 
 # Load custom environment variables
 source "$HOME/my.env"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/rzago/google-cloud-sdk/path.zsh.inc' ]; then . '/home/rzago/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/rzago/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/rzago/google-cloud-sdk/completion.zsh.inc'; fi

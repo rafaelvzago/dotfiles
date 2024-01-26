@@ -2,34 +2,39 @@ env:
   TERM: xterm-256color                                                        # Define the terminal type
 
 font:
-  family: MesloLGS NF                                                         # Define the font family (e.g. MesloLGS NF)
+  family: JetBrains Mono                                                      # Define the font family (e.g. JetBrains Mono)
   size: 11                                                                    # Define the font size (e.g. 11)
+  line_height: 1.2                                                            # Define the font line height (e.g. 1.2)
 
-# Dracula theme
+window:
+  padding:
+    x: 6
+    y: 6
+  decorations: none
+  title: Alacritty
+
 colors:
   primary:
-    background: '#282a36'                                                     # Define the background color (e.g. #282a36)
-    foreground: '#f8f8f2'                                                     # Define the foreground color (e.g. #f8f8f2)
-
+    background: '0x282828'
+    foreground: '0xebdbb2'
   normal:
-    black: '#21222C'                                                          # Define the normal black color (e.g. #21222C)
-    red: '#FF5555'                                                            # Define the normal red color (e.g. #FF5555)
-    green: '#50FA7B'                                                          # Define the normal green color (e.g. #50FA7B)
-    yellow: '#F1FA8C'                                                         # Define the normal yellow color (e.g. #F1FA8C)
-    blue: '#BD93F9'                                                           # Define the normal blue color (e.g. #BD93F9)
-    magenta: '#FF79C6'                                                        # Define the normal magenta color (e.g. #FF79C6)
-    cyan: '#8BE9FD'                                                           # Define the normal cyan color (e.g. #8BE9FD)
-    white: '#BFBFBF'                                                          # Define the normal white color (e.g. #BFBFBF)
-
+    black: '0x282828'
+    red: '0xcc241d'
+    green: '0x98971a'
+    yellow: '0xd79921'
+    blue: '0x458588'
+    magenta: '0xb16286'
+    cyan: '0x689d6a'
+    white: '0xa89984'
   bright:
-    black: '#6272A4'                                                          # Define the bright black color (e.g. #6272A4)
-    red: '#FF6E6E'                                                            # Define the bright red color (e.g. #FF6E6E)
-    green: '#69FF94'                                                          # Define the bright green color (e.g. #69FF94)
-    yellow: '#FFFFA5'                                                         # Define the bright yellow color (e.g. #FFFFA5)
-    blue: '#D6ACFF'                                                           # Define the bright blue color (e.g. #D6ACFF)
-    magenta: '#FF92DF'                                                        # Define the bright magenta color (e.g. #FF92DF)
-    cyan: '#A4FFFF'                                                           # Define the bright cyan color (e.g. #A4FFFF)
-    white: '#FFFFFF'                                                          # Define the bright white color (e.g. #FFFFFF)
+    black: '0x928374'
+    red: '0xfb4934'
+    green: '0xb8bb26'
+    yellow: '0xfabd2f'
+    blue: '0x83a598'
+    magenta: '0xd3869b'
+    cyan: '0x8ec07c'
+    white: '0xebdbb2'
 
 mouse:                                                                        # The mouse section defines the mouse settings to use for the terminal
   smooth-scroll: true
@@ -42,11 +47,10 @@ cursor:
   unfocused_hollow: true
   thickness: 0.30
   
-
 selection:                                                                    # The selection section defines the selection settings to use for the terminal (copy on select, highlight on select)
   save_to_clipboard: true
 
 shell:                                                                        # The shell section defines the shell settings to use for the terminal
-  program: /bin/zsh
+  program: /bin/bash
   login: true                                                                 # The login section defines the login to use for the terminal (true, false)
 
