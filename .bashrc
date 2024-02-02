@@ -39,8 +39,4 @@ if [ -f '/home/rzago/google-cloud-sdk/path.bash.inc' ]; then . '/home/rzago/goog
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/rzago/google-cloud-sdk/completion.bash.inc' ]; then . '/home/rzago/google-cloud-sdk/completion.bash.inc'; fi
 
-
-
-
-
-
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

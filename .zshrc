@@ -57,3 +57,5 @@ if [ -f '/home/rzago/google-cloud-sdk/path.zsh.inc' ]; then . '/home/rzago/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/rzago/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/rzago/google-cloud-sdk/completion.zsh.inc'; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

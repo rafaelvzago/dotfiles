@@ -1,11 +1,24 @@
 env:
-  TERM: xterm-256color                                                        # Define the terminal type
-
+  TERM: xterm-256color 
 font:
-  family: JetBrains Mono                                                      # Define the font family (e.g. JetBrains Mono)
-  size: 11                                                                    # Define the font size (e.g. 11)
-  line_height: 1.2                                                            # Define the font line height (e.g. 1.2)
+  normal:
+    family: JetBrains Mono
+    style: Regular
+  bold:
+    family: JetBrains Mono
+    style: Bold
 
+  italic:
+    family: JetBrains Mono
+    style: Italic
+
+  bold_italic:
+    family: JetBrains Mono
+    style: Bold Italic
+  offset:
+      x: 0 
+      y: 1 
+  size: 10  
 window:
   padding:
     x: 6
@@ -45,7 +58,7 @@ cursor:
     blinking: Always
   blink_interval: 500
   unfocused_hollow: true
-  thickness: 0.30
+  thickness: 0.
   
 selection:                                                                    # The selection section defines the selection settings to use for the terminal (copy on select, highlight on select)
   save_to_clipboard: true
