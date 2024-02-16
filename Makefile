@@ -32,7 +32,7 @@ check:
 config:
 	@echo "Configure Alacritty"
 	@mkdir -p ~/.config/alacritty || true
-	@ln -s $(CURDIR)/alacritty.yml ~/.config/alacritty/alacritty.yml || true
+	@ln -s $(CURDIR)/alacritty.toml ~/.config/alacritty/alacritty.toml || true
 	@echo "Configure Bash"
 	@ln -s $(CURDIR)/.bashrc ~/.bashrc || true
 	@echo "Configure Vim"
