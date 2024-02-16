@@ -17,7 +17,7 @@ DOTFILES = ~/.p10k.zsh	\
 					 ~/.zshrc			\
 					 ~/.bashrc		\
 					 ~/.tmux.conf \
-					 ~/.config/alacritty/alacritty.yml
+					 ~/.config/alacritty/alacritty.toml
 
 # Step to check if the dofiles already exist
 check:
@@ -28,60 +28,23 @@ check:
 		fi; \
 	done
 
-# Step to backup the existing dotfiles, copying from the original location to
-# the backup folder.
-backup:
-	@for dotfile in $(DOTFILES); do \
-		if [ -e $$dotfile ]; then \
-			echo "Backing up $$dotfile to $(BACKUP_FOLDER)"; \
-			cp -r $$dotfile $(BACKUP_FOLDER); \
-		fi; \
-	done
-
-# Step to config the machine when it's new, installing the dependencies to:
-new-machine:
-	@echo "Configuring a new machine"
-	@echo "Setting current user to allow ALL with sudo ( if not already )"
-	@if ! sudo grep -q "$(USER) ALL=(ALL) NOPASSWD: ALL" /etc/sudoers; then \
-		echo "$(USER) ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers; \
-	fi
-	@echo "Installing Ansible with PIP if not already installed"
-	@if ! command -v ansible &> /dev/null; then \
-		pip install -r requirements.txt; \
-	fi
-	@echo "Installing Vundle"
-	@git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim || true
-	@echo "Installing Tmux Plugin Manager"
-	@git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true
-
 # Step to update the dotfiles, creating the symbolic links to the dotfiles.
 config:
 	@echo "Configure Alacritty"
 	@mkdir -p ~/.config/alacritty || true
-	@rm -f ~/.config/alacritty/alacritty.yml
-	@ln -s $(CURDIR)/alacritty.yml ~/.config/alacritty/alacritty.yml
+	@ln -s $(CURDIR)/alacritty.yml ~/.config/alacritty/alacritty.yml || true
 	@echo "Configure Bash"
-	@rm -f ~/.bashrc
-	@ln -s $(CURDIR)/.bashrc ~/.bashrc
+	@ln -s $(CURDIR)/.bashrc ~/.bashrc || true
 	@echo "Configure Vim"
-	@rm -f ~/.vimrc
-	@echo "Configure Vim Plugins"
+	@ln -s $(CURDIR)/.vimrc ~/.vimrc || true
 	@vim +PluginInstall +qall || true
-	@ln -s $(CURDIR)/.vimrc ~/.vimrc
 	@echo "Configure Tmux"
-	@rm -f ~/.tmux.conf
-	@ln -s $(CURDIR)/.tmux.conf ~/.tmux.conf
+	@ln -s $(CURDIR)/.tmux.conf ~/.tmux.conf || true
 	@~/.tmux/plugins/tpm/bin/install_plugins || true
 	@echo "Configure my.env"
-	@rm -f ~/my.env
-	@ln -s $(CURDIR)/my.env ~/my.env
+	@ln -s $(CURDIR)/my.env ~/my.env || true
 
 # Step to automaticaly add the files to the git repository, commit	with a
-# default message and push to the remote repository. The message is the current
-# date, the git status output.
-# The commit is only done if there are changes to be commited.
-# The push will be done even if the destination is not the main branch
-# and doesn't exist in the remote repository.
 git:
 	@git add .
 	@git status
