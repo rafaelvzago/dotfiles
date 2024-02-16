@@ -17,7 +17,8 @@ DOTFILES = ~/.p10k.zsh	\
 					 ~/.zshrc			\
 					 ~/.bashrc		\
 					 ~/.tmux.conf \
-					 ~/.config/alacritty/alacritty.toml
+					 ~/.config/alacritty/alacritty.toml \
+					 ~/.config/lvim/config.lua
 
 # Step to check if the dofiles already exist
 check:
@@ -43,6 +44,9 @@ config:
 	@~/.tmux/plugins/tpm/bin/install_plugins || true
 	@echo "Configure my.env"
 	@ln -s $(CURDIR)/my.env ~/my.env || true
+	@echo "Configure lvim"
+	@mkdir -p ~/.config/lvim || true
+	@ln -s $(CURDIR)/config.lua ~/.config/lvim/config.lua || true
 
 # Step to automaticaly add the files to the git repository, commit	with a
 git:
