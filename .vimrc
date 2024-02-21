@@ -44,7 +44,6 @@ set colorcolumn=80                                              " set colorcolum
 
 filetype plugin indent on
 set termguicolors                                               " enable 24-bit RGB colors
-set mouse=a                                                     " enable mouse support
 set clipboard=unnamedplus                                       " enable clipboard support
 set mouse=r                                                     " enable mouse support
 set bg=dark                                                     " set background to dark
@@ -74,6 +73,7 @@ set formatoptions-=t                                            " do not automat
 set laststatus=2                                                " always show statusline
 set wildmode=longest:full,full                                  " command line completion mode
 set wildoptions=pum                                             " command line completion mode
+set mouse+=a                                                    " enable mouse support
 syntax on                                                       " syntax highlighting
 
 
@@ -92,7 +92,17 @@ nnoremap <C-S-P> :Files<CR>
 nnoremap <C-S-R> :Rg<CR>
 
 " Copilot specifics
-let g:copilot_filetypes = {'markdown': v:true}
+let g:copilot_filetypes = {
+      \ 'markdown': v:true,
+      \ 'go': v:true,
+      \ 'yaml': v:true,
+      \ 'json': v:true,
+      \ 'javascript': v:true,
+      \ 'typescript': v:true,
+      \ 'html': v:true,
+      \ 'css': v:true,
+      \ 'python': v:true,
+      \ }
 
 " Lightline config
 let g:lightline = {
