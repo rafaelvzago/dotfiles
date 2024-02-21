@@ -82,9 +82,9 @@ syntax on                                                       " syntax highlig
 let g:netrw_banner = 0                                          " Remove nerdtree banners
 let g:netrw_browse_split = 2                                    " Open nerdtree in a new tab
 map <C-n> :NERDTreeToggle<CR>
-map <C-l> :tabn<CR>
-map <C-h> :tabp<CR>
 map <C-t> :tabnew<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <C-r> :Rg<CR>
 
 " Fuzzy search
 let g:fzf_preview_window = ['right,50%', 'ctrl-/']              " Set fzf preview window
