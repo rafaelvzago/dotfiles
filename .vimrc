@@ -27,8 +27,8 @@ Plugin 'itchyny/lightline.vim'                                  " Lightline plug
 Plugin 'itchyny/vim-gitbranch'                                  " Git branch in lightline
 Plugin 'hashivim/vim-terraform'                                 " Terraform syntax highlighting
 Plugin 'fatih/vim-go'                                           " Go syntax highlighting
-Plugin 'dense-analysis/ale'                                     " Asynchronous Lint Engine
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }           " Fuzzy search
+Plugin 'dense-analysis/ale'                                     " Asynchronous Lint Engine
 Plugin 'junegunn/fzf.vim'                                       " Fuzzy search
 Plugin 'christoomey/vim-tmux-navigator'                         " Tmux navigation for vim
 call vundle#end()            " required
@@ -43,6 +43,7 @@ highlight ColorColumn ctermbg=235 guibg=#272822                 " set colorcolum
 set colorcolumn=80                                              " set colorcolumn to 80 characters
 
 filetype plugin indent on
+set cursorline                                                  " set cursorline
 set termguicolors                                               " enable 24-bit RGB colors
 set clipboard=unnamedplus                                       " enable clipboard support
 set mouse=r                                                     " enable mouse support
@@ -60,7 +61,7 @@ set undofile                                                    " enable undofil
 set incsearch                                                   " incremental search
 set autoindent                                                  " always set autoindenting on
 set copyindent                                                  " copy the previous indentation on autoindenting
-set number                                                      " always show line numbers
+set number relativenumber                                       " set line numbers
 set shiftwidth=2                                                " number of spaces to use for autoindenting
 set shiftround                                                  " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch                                                   " set show matching parenthesis
@@ -115,6 +116,18 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
+
+" Ale
+nnoremap <leader>fr :ALEFindReferences<CR>
+nnoremap <leader>cn :cnext<CR>
+nnoremap <leader>cp :cprev<CR>
+nnoremap <leader>co :copen<CR>
+
+let g:ale_java_eclipse_jdt_ls_path = $HOME . '/Apps/jdt'
+let g:ale_linters = {
+\   'java': ['eclipse'],
+\}
+
 
 " Language specifics
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown     " set markdown filetype
