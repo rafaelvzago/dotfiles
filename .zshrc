@@ -59,3 +59,6 @@ if [ -f '/home/rzago/google-cloud-sdk/path.zsh.inc' ]; then . '/home/rzago/googl
 if [ -f '/home/rzago/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/rzago/google-cloud-sdk/completion.zsh.inc'; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/vault vault

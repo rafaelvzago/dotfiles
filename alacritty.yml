@@ -1,0 +1,38 @@
+import:
+  - "~/.alacritty-colorscheme/themes/gruvbox_dark.yaml"
+window:
+  decorations: "None"
+  padding:
+    x: 5
+    y: 5
+cursor:
+  blink_interval: 500
+  thickness: 0.3
+  unfocused_hollow: true
+  style:
+    blinking: "Always"
+    shape: "Beam"
+env:
+  TERM: "xterm-256color"
+font:
+  size: 10
+  bold:
+    family: "JetBrains Mono"
+    style: "Bold"
+  bold_italic:
+    family: "JetBrains Mono"
+    style: "Bold Italic"
+  italic:
+    family: "JetBrains Mono"
+    style: "Italic"
+  normal:
+    family: "JetBrains Mono"
+    style: "Regular"
+  offset:
+    x: 0
+    y: 1
+selection:
+  save_to_clipboard: true
+shell:
+  program: "/bin/bash"
+
