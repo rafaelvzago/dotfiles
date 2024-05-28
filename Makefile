@@ -18,7 +18,6 @@ DOTFILES = ~/.p10k.zsh	\
 					 ~/.bashrc		\
 					 ~/.tmux.conf \
 					 ~/.config/alacritty/alacritty.yml \
-					 ~/.config/lvim/config.lua
 
 # Step to check if the dofiles already exist
 check:
@@ -32,18 +31,18 @@ check:
 # Step to update the dotfiles, creating the symbolic links to the dotfiles.
 config:
 	@echo "Configure Alacritty"
-	@mkdir -p ~/.config/alacritty || true
-	@ln -s $(CURDIR)/alacritty.yml ~/.config/alacritty/alacritty.yml || true
-	@echo "Configure Bash"
-	@ln -s $(CURDIR)/.bashrc ~/.bashrc || true
+	@mkdir -p ~/.config/alacritty
+	@ln -sf $(CURDIR)/alacritty.yml ~/.config/alacritty/alacritty.yml
+	@echo "Configure zsh"
+	@ln -sf $(CURDIR)/.zshrc ~/.zshrc
 	@echo "Configure Vim"
-	@ln -s $(CURDIR)/.vimrc ~/.vimrc || true
-	@vim +PluginInstall +qall || true
+	@ln -sf $(CURDIR)/.vimrc ~/.vimrc
+	@vim +PluginInstall +qall
 	@echo "Configure Tmux"
-	@ln -s $(CURDIR)/.tmux.conf ~/.tmux.conf || true
-	@~/.tmux/plugins/tpm/bin/install_plugins || true
+	@ln -sf $(CURDIR)/.tmux.conf ~/.tmux.conf
+	@~/.tmux/plugins/tpm/bin/install_plugins
 	@echo "Configure my.env"
-	@ln -s $(CURDIR)/my.env ~/my.env || true
+	@ln -sf $(CURDIR)/my.env ~/my.env
 
 # Step to automaticaly add the files to the git repository, commit	with a
 git:

@@ -87,6 +87,11 @@ map <C-t> :tabnew<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-r> :Rg<CR>
 
+
+" Vim split navigation and mappings
+map <C-vs> <C-w>v                                               " split vertically
+map <C-hs> <C-w>s                                               " split horizontally
+
 " Fuzzy search
 let g:fzf_preview_window = ['right,50%', 'ctrl-/']              " Set fzf preview window
 nnoremap <C-S-P> :Files<CR>
